@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Guess Num</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <nav class="navbar navbar-dark bg-primary mb-3">
+      <div class="container">
+        <a href="/" class="navbar-brand text-white">Guess Number</a>
+      </div>
+    </nav>
+    <div class="container postsContainer">
+      <div class="card card-body card-form">
+        <h1>Guess a Random number</h1>
+        <p class="lead">When games starts, it will generate a random number between 1~100, you have 10 times to get.</p>
+        <div class="form-group">
+          <input type="number" v-model="guessNum" class="form-control" placeholder="Guess a number between 1-100">
+        </div>
+        <p v-if='gameStart'>
+          <button class="btn btn-primary" @click="validate()">Check my Guess</button>
+        </p>
+        <p v-else>
+          <button class="btn btn-success" @click="restart()">Restart Game</button>
+        </p>
+        <br>
+        <p id="guessed">
+          <span v-for="x in guessedValue"> {{x}}, </span>
+        </p>
+        <br>
+        <h3 :class="{'text-danger': isError, 'text-success': isCorrect}" id="result">
+          {{result}}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="guess.js"></script>
+  
+</body>
+
+</html>
