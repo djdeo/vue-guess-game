@@ -4,7 +4,10 @@ var vm = new Vue({
     guessNum: '',
     randomNum: '',
     result: '',
-    guessedValue: [],
+    range: '',
+    counter: 10,
+    max: 100,
+    min: 1,
     isCorrect: false,
     isError: true,
     gameStart: true
@@ -25,12 +28,13 @@ var vm = new Vue({
     validate: function() {
       let G = this.guessNum,
         R = this.randomNum
-      
-      if ( G > 100 || G < 1) { alert('Please Guess Between 1~100') } else {
+
+      this.counter--
+
+      if (G > 100 || G < 1) { alert('Please Guess Between 1~100') } else {
         if (G != R) {
           this.isCorrect = false
           this.isError = true
-          this.guessedValue.push(G)
           this.guessNum = ''
         } else {
           this.isCorrect = true
@@ -38,24 +42,21 @@ var vm = new Vue({
           this.result = `${G} is correct, Congratulations!`
           document.querySelector('.form-control').setAttribute('disabled', 'disabled')
           this.gameStart = false
-
         }
-        if (G > R) {
+        if (G > R ) {
           this.result = `${G} is too large`
-        } else if (G < R) {
+          this.max = G
+        } else if (G < R ) {
           this.result = `${G} is too small`
+          this.min = G
         }
-        if (this.guessedValue.length > 10) {
-          alert("GameOver! Sorry, you've used up all the chances")
+        if (this.counter < 1) {
+          alert(`GameOver! You Failed... the right answer is ${this.randomNum}`)
           this.gameStart = false
           document.querySelector('.form-control').remove()
-          document.querySelector('#guessed').remove()
           document.querySelector('#result').remove()
-
         }
       }
-
-
     }
   }
 })
