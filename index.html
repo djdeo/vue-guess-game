@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Vue Guess Num</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
 </head>
 
@@ -20,7 +20,7 @@
         <h1>Guess a Random number</h1>
         <p class="lead">When games starts, it will generate a random number between 1~100, you have 10 chances to guess.</p>
         <div class="form-group">
-          <input type="number" v-model="guessNum" class="form-control" placeholder="Guess a number between 1-100">
+          <input type="number" v-model="guessNum" class="form-control" :disabled="isDisabled" placeholder="Guess a number between 1-100">
         </div>
         <p v-if='gameStart'>
           <button class="btn btn-primary" @click="validate()">Check my Guess</button>
@@ -29,21 +29,25 @@
           <button class="btn btn-success" @click="restart()">Restart Game</button>
         </p>
         <br>
-      
+
         <!-- show result between the guessed num -->
-        <h3 class="text-success">Hint: {{min}} ~ {{max}}</h3>
-        <p><strong class="text-warning">{{counter}}</strong> chances left </p>
-        
-        <h4 :class="{'text-danger': isError, 'text-success': isCorrect}" id="result">
-          {{result}}
-        </h4>
-        
+        <div v-show="gameStart">
+          <h3 class="text-success">Hint: {{min}} ~ {{max}}</h3>
+          <p>
+            <strong class="text-warning">{{counter}}</strong> chances left </p>
+
+          <h4 :class="{'text-danger': isError, 'text-success': isCorrect}" id="result">
+            {{result}}
+          </h4>
+        </div>
+
+
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="guess.js"></script>
-  
+
 </body>
 
 </html>

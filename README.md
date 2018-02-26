@@ -7,4 +7,5 @@ Chrome, FireFox are working fine
 
 ## To do
 
-- [ ] Remove not Vue style scripts
+- [x] Remove not Vue style scripts
+- [ ] Add press Enter event
