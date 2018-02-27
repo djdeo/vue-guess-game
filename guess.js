@@ -30,11 +30,11 @@ var vm = new Vue({
       let G = this.guessNum,
         R = this.randomNum
 
-      this.counter--
-
-        if (G > 100 || G < 1) {
-          alert('Please Guess Between 1~100')
-        } else {
+      if (G > 100 || G < 1) {
+        alert('Please Guess Between 1~100')
+        this.guessNum = ''
+      } else {
+        this.counter--
           if (G != R) {
             this.isCorrect = false
             this.isError = true
@@ -46,19 +46,19 @@ var vm = new Vue({
             this.isDisabled = true
             this.gameStart = false
           }
-          if (G > R) {
-            this.result = `${G} is too large`
-            this.max = G
-          } else if (G < R) {
-            this.result = `${G} is too small`
-            this.min = G
-          }
-          if (this.counter < 1) {
-            alert(`GameOver! You Failed... the right answer is ${this.randomNum}`)
-            this.gameStart = false
-            this.isDisabled = true
-          }
+        if (G > R) {
+          this.result = `${G} is too large`
+          this.max = G
+        } else if (G < R) {
+          this.result = `${G} is too small`
+          this.min = G
         }
+        if (this.counter < 1 && G != R) {
+          alert(`GameOver! You Failed... the right answer is ${this.randomNum}`)
+          this.gameStart = false
+          this.isDisabled = true
+        }
+      }
     }
   }
 })

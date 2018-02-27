@@ -9,3 +9,4 @@ Chrome, FireFox are working fine
 
 - [x] Remove not Vue style scripts
 - [ ] Add press Enter event
+- [ ] Customize guess chances
