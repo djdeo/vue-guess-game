@@ -23,7 +23,7 @@
             <option v-for="n in 10"> {{n}} </option>
           </select>
         </p>
-        <p>When games starts, it will generate a random number between 1~100, you have {{counter}} chances to guess.</p>
+        <p>When game starts, it will generate a random number between 1~100 and you have {{counter}} chances to guess.</p>
         <div class="form-group">
           <input type="number" v-model="guessNum" class="form-control" :disabled="isDisabled" placeholder="Guess a number between 1-100 and press Enter to check" @keyup.enter="validate()">
         </div>
