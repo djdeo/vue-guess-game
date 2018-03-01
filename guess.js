@@ -5,7 +5,7 @@ var vm = new Vue({
     randomNum: '',
     result: '',
     range: '',
-    counter: 10,
+    counter: 5,
     max: 100,
     min: 1,
     isCorrect: false,
